@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const data = {phone:"3311"};
+        const a6 = {id: 1, name: "사자", phone: "1111"};
+        const b6 = {...a6};
+        const b6_ = {...a6, name: "호랑이", phone: "1122"};
+        // 순서를 잘 지켜야한다. ...data, ...a6 시 phone이 바뀌지 않음
+        const b6_1 = {...a6, ...data};
+        console.log(b6); // 복제된 상태
+        console.log(b6_); // 복제된 상태
+        console.log(b6_1); // 복제된 상태
+
+        const users = [
+            {id:1, name: "고양이", phone:1111},
+            {id:2, name: "토끼", phone:2222},
+            {id:3, name: "곰돌이", phone:3333},
+        ];
+
+        const updateUserDto = {
+            id:2, name: "펭귄"
+        };
+        // filter를 쓰면 배열 전체가 아니므로 map을 쓴다.
+        const newUsers = users.
+        map(user => user.id === updateUserDto.id ? {...user, ...updateUserDto}: user); // const newUser = {...users};
+        console.log("newUsers", newUsers);
+
+    // 최적화 할 수 없는 코드   
+    //    users[1].name = updateUserDto.name;
+    //    console.log(users);
+
+    </script>
+</body>
+</html>
